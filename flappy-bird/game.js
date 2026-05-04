@@ -1,6 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreBoard = document.getElementById('scoreBoard');
+const highScoreBoard = document.getElementById('highScoreBoard');
 const message = document.getElementById('message');
 
 // Game constants
@@ -25,6 +26,13 @@ let score = 0;
 let gameActive = false;
 let gameOver = false;
 let aiMode = false;
+
+function updateHighScoreDisplay() {
+    const highScore = localStorage.getItem('flappyBirdHighScore') || 0;
+    highScoreBoard.textContent = `Best: ${highScore}`;
+}
+
+updateHighScoreDisplay();
 
 function resetGame() {
     bird.y = 150;
@@ -197,6 +205,13 @@ function draw() {
 function endGame() {
     gameActive = false;
     gameOver = true;
+    
+    const currentHighScore = localStorage.getItem('flappyBirdHighScore') || 0;
+    if (score > currentHighScore) {
+        localStorage.setItem('flappyBirdHighScore', score);
+        updateHighScoreDisplay();
+    }
+    
     message.style.display = 'block';
     message.textContent = `Game Over! Score: ${score}. Press Space or Click to Restart.`;
 }
