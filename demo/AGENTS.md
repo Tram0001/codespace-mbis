@@ -45,6 +45,5 @@ ALWAYS IGNORE THE FOLLOWING FOLDERS AND FILES:
 * './etc/profile.d/codespace.sh'
 * './opt/mbis'
 
-**DO NOT DELETE OR MODIFY THE FILES IN THESE FOLDERS, as that may corrupt the codespace and data.**
+**DO NOT DELETE OR MODIFY THE FILES IN THESE FOLDERS, as that may corrupt the codespace and data.** 
 
-    
